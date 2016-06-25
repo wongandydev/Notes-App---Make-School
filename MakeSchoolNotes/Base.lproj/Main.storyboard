@@ -130,6 +130,12 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="noteContentTextField" destination="PNd-cH-Abb" id="lYa-Eu-Z1a"/>
+                        <outlet property="noteContentTextView" destination="CvA-Od-b2g" id="Pxg-Xf-QvB"/>
+                        <outlet property="noteTitleTextField" destination="PNd-cH-Abb" id="aFv-a9-clU"/>
+                        <outlet property="noteTitleTextView" destination="CvA-Od-b2g" id="0Aq-K7-uUB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="894-d1-fqJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="7c2-UR-QiA" userLabel="Exit" sceneMemberID="exit"/>
@@ -138,6 +144,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mDZ-m3-4eX"/>
+        <segue reference="yp1-mr-cwR"/>
     </inferredMetricsTieBreakers>
 </document>

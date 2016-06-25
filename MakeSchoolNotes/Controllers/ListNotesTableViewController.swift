@@ -10,7 +10,12 @@ import UIKit
 
 class ListNotesTableViewController: UITableViewController {
     
-    var notes = [Note]() //Array called notes initialized with Note(from note.swift) in the array //every time a user enters or deletes a note, the array will correspond
+    var notes = [Note](){ //Array called notes initialized with Note(from note.swift) in the array //every time a user enters or deletes a note, the array will correspond
+    
+        didSet {
+            tableView.reloadData() //Tels the table view controller to update it's cells to show that there is a new note recently saved 
+        }
+    }
     
     @IBAction func unWindToListNotesViewController(segue: UIStoryboardSegue){
         
