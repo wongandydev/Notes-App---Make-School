@@ -9,13 +9,18 @@
 import UIKit
 
 class DisplayNoteViewController: UIViewController {
-    @IBOutlet weak var noteContentTextView: UITextField!
-    @IBOutlet weak var noteContentTextField: UITextView!
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
-  }
+    @IBOutlet weak var noteContentTextView: UITextField!
+    @IBOutlet weak var noteTitleTextField: UITextView!
+
     
+    override func viewWillAppear(animated: Bool) {//give us the opportuniy to excute some view controller specific code before the user sees the view controll. For this case it will remove "Loremm ipsum..."
+        super.viewWillAppear(animated)
+        
+        noteTitleTextField.text = ""
+        noteContentTextView.text = ""
+    }
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             if identifier == "Cancel" {
@@ -26,23 +31,22 @@ class DisplayNoteViewController: UIViewController {
                 
                 let note = Note()
                 
-                note.title = noteContentTextView.text ?? "" //Allows no Title and it will display whatever user enters as Title
-                note.content = noteContentTextField.text   //Xcode is constanly telling me to add ! behind text but tutorial doesn't
+                note.title = noteTitleTextField.text ?? "" //Allows no Title and it will display whatever user enters as Title
+                note.content = noteContentTextView.text! //Xcode is constanly telling me to add ! behind text but tutorial doesn't
                 
                 note.modificationTime = NSDate()// What does the NS mean? //NSDATE - Year/Month/Day
                 
                 let listNotesTableViewController = segue.destinationViewController as! ListNotesTableViewController //What does this do?
                 
-                listNotesTableViewController.notes.append(note) //dds what we write into notes?
+                    listNotesTableViewController.notes.append(note) //dds what we write into notes?
                 
             }
         }
+    
     }
-
-    override func viewWillAppear(animated: Bool) {//give us the opportuniy to excute some view controller specific code before the user sees the view controll. For this case it will remove "Loremm ipsum..."
-        super.viewWillAppear(animated)
-        
-        noteContentTextField.text = ""
-        noteContentTextView.text = ""
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
+    
 }

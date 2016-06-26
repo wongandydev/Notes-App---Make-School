@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
     </dependencies>
     <scenes>
         <!--Notes-->
@@ -19,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e5G-wG-mNh" id="Du3-q9-QAa">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notes Modification Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YTM-Rb-tqk">
@@ -39,7 +40,10 @@
                                 <connections>
                                     <outlet property="notesModificationTimeLabel" destination="YTM-Rb-tqk" id="fKa-1W-QcY"/>
                                     <outlet property="notesTitleLabel" destination="XGV-WU-wEN" id="hIS-ZO-c0v"/>
-                                    <segue destination="4K3-L3-buy" kind="show" identifier="displayNote" id="yp1-mr-cwR"/>
+                                    <segue destination="4K3-L3-buy" kind="show" identifier="displayNote" id="yp1-mr-cwR">
+                                        <segue key="commit" inheritsFrom="parent" id="t2Y-HS-QnA"/>
+                                        <segue key="preview" inheritsFrom="commit" id="HWs-3V-KDD"/>
+                                    </segue>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -51,7 +55,7 @@
                     <navigationItem key="navigationItem" title="Notes" id="MFk-ll-KDw">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Hdf-2u-Wol">
                             <connections>
-                                <segue destination="4K3-L3-buy" kind="show" identifier="addNote" id="mDZ-m3-4eX"/>
+                                <segue destination="4K3-L3-buy" kind="show" identifier="addNote" id="ypj-RG-eqe"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -132,8 +136,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="noteContentTextField" destination="PNd-cH-Abb" id="lYa-Eu-Z1a"/>
-                        <outlet property="noteContentTextView" destination="CvA-Od-b2g" id="Pxg-Xf-QvB"/>
-                        <outlet property="noteTitleTextField" destination="PNd-cH-Abb" id="aFv-a9-clU"/>
+                        <outlet property="noteContentTextView" destination="CvA-Od-b2g" id="A5x-ae-BLp"/>
+                        <outlet property="noteTitleTextField" destination="PNd-cH-Abb" id="AB9-QA-fmC"/>
                         <outlet property="noteTitleTextView" destination="CvA-Od-b2g" id="0Aq-K7-uUB"/>
                     </connections>
                 </viewController>
@@ -144,6 +148,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="yp1-mr-cwR"/>
+        <segue reference="ypj-RG-eqe"/>
     </inferredMetricsTieBreakers>
 </document>
