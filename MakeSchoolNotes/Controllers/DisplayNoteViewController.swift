@@ -13,6 +13,7 @@ class DisplayNoteViewController: UIViewController {
     @IBOutlet weak var noteContentTextView: UITextField!
     @IBOutlet weak var noteTitleTextField: UITextView!
 
+    var note: Note?
     
     override func viewWillAppear(animated: Bool) {//give us the opportuniy to excute some view controller specific code before the user sees the view controll. For this case it will remove "Loremm ipsum..."
         super.viewWillAppear(animated)
