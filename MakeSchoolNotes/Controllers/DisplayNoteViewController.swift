@@ -18,36 +18,40 @@ class DisplayNoteViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {//give us the opportuniy to excute some view controller specific code before the user sees the view controll. For this case it will remove "Loremm ipsum..."
         super.viewWillAppear(animated)
         
+        if let note = note {
+            noteTitleTextField.text = note.title //if there is something in note, Title will be presented inthe Note
+            noteContentTextView.text = note.content //if there is something in note, the text content will bre revealed
+        }
+        else {
         noteTitleTextField.text = ""
         noteContentTextView.text = ""
+        }
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let identifier = segue.identifier {
-            if identifier == "Cancel" {
-                print ("Cancel button tapped")
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) { //Used to tell the app to save the information so when you click back on the cell, the notes will re-appear
+        let listNotesTableViewController = segue.destinationViewController as! ListNotesTableViewController
+        if segue.identifier == "Save" { //Used to save current notes .
+            if let note = note {
+                note.title = noteTitleTextField.text ?? ""
+                note.content = noteContentTextView.text ?? ""
+                
+                listNotesTableViewController.tableView.reloadData()
             }
-            else if identifier == "Save" {
-                print ("Save buttton tapped")
-                
-                let note = Note()
-                
-                note.title = noteTitleTextField.text ?? "" //Allows no Title and it will display whatever user enters as Title
-                note.content = noteContentTextView.text! //Xcode is constanly telling me to add ! behind text but tutorial doesn't
-                
-                note.modificationTime = NSDate()// What does the NS mean? //NSDATE - Year/Month/Day
-                
-                let listNotesTableViewController = segue.destinationViewController as! ListNotesTableViewController //What does this do?
-                
-                    listNotesTableViewController.notes.append(note) //dds what we write into notes?
-                
+                else{ //creates new note if "Save" isn't pressed 
+                    let newNote = Note()
+                    newNote.title = noteTitleTextField.text ?? ""
+                    newNote.content = noteContentTextView.text ?? ""
+                    newNote.modificationTime = NSDate()
+                    listNotesTableViewController.notes.append(newNote)
+                }
             }
         }
-    
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
 }
+
+
+

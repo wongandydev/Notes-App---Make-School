@@ -57,13 +57,29 @@ class ListNotesTableViewController: UITableViewController {
         if let identifier = segue.identifier {//storing the identifier of the segue taht was triggered into a loval variable called "Odentifier" //What is identifier?
         if identifier == "displayNote" {//Checking to see if the "displayNote" sqgue was triggered
             print ("Table view cell tapped") //prints the message in parenthesis
-                }
+            
+        let indexPath = tableView.indexPathForSelectedRow! //indexPathForSelectedRow is a method used in every tableView so when the user taps on a cell it will bring us to the cell's index path  // this is forcefully unwrapped '!' because there has to be a cell for the user to tap or it will crash and since this only works when the identifier is "displayNote' it will be safe as well
+            
+        let note = notes[indexPath.row]
+            
+        let displayNoteViewController = segue.destinationViewController as! DisplayNoteViewController// "as!" means downcasting but what is downcasting exactly?
+            
+        displayNoteViewController.note = note //sets the note property of displaynoteviewontrol to note in cell
+       
+        }
         else if identifier == "addNote" { //if add button also know as addNote is tapped, do what is inside if statement
             print ("+ button tapped")
             }
         }
     }
-
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath ){ //Figure out what this piece of code it doing.
+    
+    if editingStyle == .Delete { //if user decides to delete the note, it will delete and then reloads the data 
+        notes.removeAtIndex(indexPath.row)
+    
+        tableView.reloadData()
+        }
+    }
   override func viewDidLoad() {
     super.viewDidLoad()
   }

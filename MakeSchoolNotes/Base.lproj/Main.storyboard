@@ -94,32 +94,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PNd-cH-Abb">
-                                <rect key="frame" x="45" y="156" width="240" height="84"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="I3c-Kc-kyu"/>
-                                </constraints>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CvA-Od-b2g">
-                                <rect key="frame" x="45" y="72" width="240" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="0qR-Ld-kw9"/>
-                                </constraints>
+                                <rect key="frame" x="45" y="72" width="517" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PNd-cH-Abb">
+                                <rect key="frame" x="42" y="119" width="517" height="138"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="PNd-cH-Abb" firstAttribute="top" secondItem="CvA-Od-b2g" secondAttribute="bottom" constant="54" id="FBH-Y6-UFS"/>
-                            <constraint firstItem="CvA-Od-b2g" firstAttribute="leading" secondItem="THX-7D-G2m" secondAttribute="leadingMargin" constant="25" id="HYO-f1-YWH"/>
-                            <constraint firstItem="CvA-Od-b2g" firstAttribute="top" secondItem="8S7-vm-euc" secondAttribute="bottom" constant="8" symbolic="YES" id="OiL-aQ-rUY"/>
-                            <constraint firstItem="loV-Hh-HUm" firstAttribute="top" secondItem="PNd-cH-Abb" secondAttribute="bottom" constant="360" id="dd9-fi-zKY"/>
-                            <constraint firstItem="CvA-Od-b2g" firstAttribute="leading" secondItem="PNd-cH-Abb" secondAttribute="leading" id="qvU-Yq-SZL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CvA-Od-b2g" secondAttribute="trailing" constant="18" id="B2b-YT-Ai4"/>
+                            <constraint firstItem="PNd-cH-Abb" firstAttribute="centerX" secondItem="THX-7D-G2m" secondAttribute="centerX" id="BAh-0J-LOf"/>
+                            <constraint firstItem="loV-Hh-HUm" firstAttribute="top" secondItem="PNd-cH-Abb" secondAttribute="bottom" constant="343" id="a8c-bb-U2D"/>
+                            <constraint firstItem="PNd-cH-Abb" firstAttribute="top" secondItem="CvA-Od-b2g" secondAttribute="bottom" constant="17" id="flF-4l-fIz"/>
+                            <constraint firstItem="CvA-Od-b2g" firstAttribute="top" secondItem="8S7-vm-euc" secondAttribute="bottom" constant="8" symbolic="YES" id="ndc-mi-g2M"/>
+                            <constraint firstItem="PNd-cH-Abb" firstAttribute="leading" secondItem="THX-7D-G2m" secondAttribute="leadingMargin" constant="22" id="pB3-wS-j6F"/>
+                            <constraint firstItem="CvA-Od-b2g" firstAttribute="leading" secondItem="THX-7D-G2m" secondAttribute="leadingMargin" constant="25" id="qgw-xs-pfV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="DVr-lO-zRN">
