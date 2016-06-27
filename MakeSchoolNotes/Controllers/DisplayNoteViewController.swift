@@ -20,8 +20,8 @@ class DisplayNoteViewController: UIViewController {
         super.viewWillAppear(animated)
         
         if let note = note {
-            noteTitleTextField.text = note.title //if there is something in note, Title will be presented inthe Note
-            noteContentTextView.text = note.content //if there is something in note, the text content will bre revealed
+            noteContentTextView.text = note.title //if there is something in note, Title will be presented inthe Note
+            noteTitleTextField.text = note.content //if there is something in note, the text content will bre revealed
         }
         else {
         noteTitleTextField.text = ""
@@ -34,16 +34,16 @@ class DisplayNoteViewController: UIViewController {
         if segue.identifier == "Save" { //Used to save current notes .
             if let note = note{
                 let newNote = Note()
-                newNote.title = noteTitleTextField.text ?? ""
-                newNote.content = noteContentTextView.text ?? ""
+                newNote.title = noteContentTextView.text ?? ""
+                newNote.content = noteTitleTextField.text ?? ""
                     
                 RealmHelper.updateNote(note, newNote: newNote)
                 
             }
             else{ //creates new note if "Save" isn't pressed
                 let note = Note()
-                note.title = noteTitleTextField.text ?? ""
-                note.content = noteContentTextView.text ?? ""
+                note.title = noteContentTextView.text ?? ""
+                note.content = noteTitleTextField.text ?? "" 
                 note.modificationTime = NSDate()
                 
                 RealmHelper.addNote(note)
