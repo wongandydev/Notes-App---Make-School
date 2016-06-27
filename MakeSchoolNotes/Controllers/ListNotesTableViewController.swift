@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ListNotesTableViewController: UITableViewController {
     
-    var notes = [Note]() { //Array called notes initialized with Note(from note.swift) in the array //every time a user enters or deletes a note, the array will correspond
+    var notes: Results<Note>! {//Holds notes, but Results<> has some special optimizations where it will perform better with very large number of objects
         didSet {
             tableView.reloadData() //Tels the table view controller to update it's cells to show that there is a new note recently saved 
         }
@@ -74,14 +75,15 @@ class ListNotesTableViewController: UITableViewController {
     }
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath ){ //Figure out what this piece of code it doing.
     
-    if editingStyle == .Delete { //if user decides to delete the note, it will delete and then reloads the data 
-        notes.removeAtIndex(indexPath.row)
+    if editingStyle == .Delete { //if user decides to delete the note, it will delete and then reloads the data
+        RealmHelper.deleteNote(notes[indexPath.row])//Delperes the note using the helper method 
     
-        tableView.reloadData()
+        notes = RealmHelper.retrieveNotes()
         }
     }
   override func viewDidLoad() {
     super.viewDidLoad()
+    notes = RealmHelper.retrieveNotes()
   }
   
 }

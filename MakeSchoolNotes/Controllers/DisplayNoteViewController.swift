@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class DisplayNoteViewController: UIViewController {
 
@@ -31,21 +32,25 @@ class DisplayNoteViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) { //Used to tell the app to save the information so when you click back on the cell, the notes will re-appear
         let listNotesTableViewController = segue.destinationViewController as! ListNotesTableViewController
         if segue.identifier == "Save" { //Used to save current notes .
-            if let note = note {
+            if let note = note{
+                let newNote = Note()
+                newNote.title = noteTitleTextField.text ?? ""
+                newNote.content = noteContentTextView.text ?? ""
+                    
+                RealmHelper.updateNote(note, newNote: newNote)
+                
+            }
+            else{ //creates new note if "Save" isn't pressed
+                let note = Note()
                 note.title = noteTitleTextField.text ?? ""
                 note.content = noteContentTextView.text ?? ""
+                note.modificationTime = NSDate()
                 
-                listNotesTableViewController.tableView.reloadData()
+                RealmHelper.addNote(note)
             }
-                else{ //creates new note if "Save" isn't pressed 
-                    let newNote = Note()
-                    newNote.title = noteTitleTextField.text ?? ""
-                    newNote.content = noteContentTextView.text ?? ""
-                    newNote.modificationTime = NSDate()
-                    listNotesTableViewController.notes.append(newNote)
-                }
-            }
+            listNotesTableViewController.notes = RealmHelper.retrieveNotes()
         }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

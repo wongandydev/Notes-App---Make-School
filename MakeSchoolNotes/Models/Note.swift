@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import RealmSwift
 
-
-class Note {
-    var title = ""
-    var content = ""
-    var modificationTime = NSDate() //What does NSDate do? What does NS mean? NSDate shows Year/Month/Day
+class Note: Object {
+    dynamic var title = ""
+    dynamic var content = ""
+    dynamic var modificationTime = NSDate() //What does NSDate do? What does NS mean? NSDate shows Year/Month/Day
 }
+
